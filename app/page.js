@@ -5,9 +5,13 @@ import { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 export default function FyloHome() {
-  // Initialize darkMode based on the value stored in local storage, or default to false (light mode).
-  const storedDarkMode = localStorage.getItem("darkMode");
-  const [darkMode, setDarkMode] = useState(storedDarkMode === "true");
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Initialize darkMode based on the value stored in local storage, or default to false (light mode).
+    const storedDarkMode = localStorage.getItem("darkMode");
+    setDarkMode(storedDarkMode === "true");
+  }, []);
 
   // Function to toggle dark mode
   const toggleDarkMode = () => {
